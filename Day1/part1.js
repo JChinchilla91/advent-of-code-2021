@@ -1,13 +1,7 @@
-const fs = require('fs');
+const fs = require('fs')
 
 input = fs.readFileSync('input.txt', {encoding: 'utf-8'}).split('\n').filter(x => x).map(x => parseInt(x));
 
-let count = 0;
+input = input.filter((depth, i, arr) => depth < arr[i+1]).length;
 
-input.forEach((num, i) => {
-    if (input[i+1] > num) { 
-        count++ 
-    }
-})
-
-console.log(count);
+console.log(input)
